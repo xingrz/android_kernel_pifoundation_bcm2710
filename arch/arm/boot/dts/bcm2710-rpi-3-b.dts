@@ -94,8 +94,63 @@
 	};
 };
 
-&fb {
+&i2c2 {
 	status = "okay";
+};
+
+&cprman {
+	status = "okay";
+};
+
+&pixelvalve0 {
+	interrupts = <2 13>; /* pwa0 */
+	status = "okay";
+};
+
+&pixelvalve1 {
+	interrupts = <2 14>; /* pwa1 */
+	status = "okay";
+};
+
+&pixelvalve2 {
+	interrupts = <2 10>; /* pixelvalve */
+	status = "okay";
+};
+
+&hvs {
+	interrupts = <2 1>;
+	status = "okay";
+};
+
+&hdmi {
+	interrupts = <2 8>, <2 9>;
+	status = "okay";
+};
+
+&v3d {
+	interrupts = <1 10>;
+	status = "okay";
+};
+
+&gpu {
+	status = "okay";
+};
+
+&dma {
+	brcm,dma-channel-mask = <0x7f35>;
+};
+
+&dsi1 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+
+	brcm,panel = <&pitouchscreen>;
+
+	pitouchscreen: panel {
+		compatible = "raspberrypi,touchscreen";
+		reg = <0>;
+	};
 };
 
 &uart0 {
@@ -173,7 +228,7 @@
 
 / {
 	chosen {
-		bootargs = "8250.nr_uarts=1";
+		bootargs = "cma=256M@256M";
 	};
 };
 
