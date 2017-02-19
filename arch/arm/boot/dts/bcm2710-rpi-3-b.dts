@@ -219,6 +219,22 @@
 		linux,default-trigger = "mmc0";
 		gpios = <&virtgpio 0 0>;
 	};
+
+	dvk512_led0 {
+		gpios = <&gpio 26 GPIO_ACTIVE_HIGH>;
+	};
+
+	dvk512_led1 {
+		gpios = <&gpio 12 GPIO_ACTIVE_HIGH>;
+	};
+
+	dvk512_led2 {
+		gpios = <&gpio 16 GPIO_ACTIVE_HIGH>;
+	};
+
+	dvk512_led3 {
+		gpios = <&gpio 20 GPIO_ACTIVE_HIGH>;
+	};
 };
 
 &audio {
