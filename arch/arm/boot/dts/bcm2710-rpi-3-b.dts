@@ -51,15 +51,15 @@
 	};
 
 	uart0_pins: uart0_pins {
-		brcm,pins = <32 33>;
-		brcm,function = <7>; /* alt3=UART0 */
-		brcm,pull = <0 2>;
-	};
-
-	uart1_pins: uart1_pins {
 		brcm,pins;
 		brcm,function;
 		brcm,pull;
+	};
+
+	uart1_pins: uart1_pins {
+		brcm,pins = <32 33>;
+		brcm,function = <2>; /* alt5=UART1 */
+		brcm,pull = <0 2>;
 	};
 
 	audio_pins: audio_pins {
@@ -155,13 +155,13 @@
 
 &uart0 {
 	pinctrl-names = "default";
-	pinctrl-0 = <&uart0_pins &bt_pins>;
+	pinctrl-0 = <&uart0_pins>;
 	status = "okay";
 };
 
 &uart1 {
 	pinctrl-names = "default";
-	pinctrl-0 = <&uart1_pins>;
+	pinctrl-0 = <&uart1_pins &bt_pins>;
 	status = "okay";
 };
 
@@ -245,6 +245,11 @@
 / {
 	chosen {
 		bootargs = "cma=256M@256M";
+	};
+
+	aliases {
+		serial0 = &uart0;
+		serial1 = &uart1;
 	};
 
 	gpio-keys {
